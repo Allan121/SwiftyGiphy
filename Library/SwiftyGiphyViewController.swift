@@ -175,7 +175,7 @@ public class SwiftyGiphyViewController: UIViewController {
         }
         else
         {
-            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.leftBarButtonItem = nil
         }
     }
 
