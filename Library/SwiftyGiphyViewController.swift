@@ -83,7 +83,7 @@ public class SwiftyGiphyViewController: UIViewController {
         super.loadView()
 
         self.title = NSLocalizedString("Giphy", comment: "Giphy")
-        self.navigationItem.titleView = UIImageView(image: UIImage(named: "GiphyLogoEmblem", in: Bundle(for: SwiftyGiphyViewController.self), compatibleWith: nil))
+        self.navigationItem.titleView = UIImageView(image: UIImage(named: "GiphyLogoEmblemPlain", in: Bundle(for: SwiftyGiphyViewController.self), compatibleWith: nil))
 
         searchController.searchBar.placeholder = NSLocalizedString("Search GIFs", comment: "The placeholder string for the Giphy search field")
         searchController.searchResultsUpdater = self
@@ -166,10 +166,12 @@ public class SwiftyGiphyViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 240/255, green: 239/255, blue: 244/255, alpha: 1)
 
         if self.navigationController?.viewControllers.count == 1 && self.navigationController?.presentingViewController != nil
         {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissPicker))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissPicker))
         }
         else
         {
